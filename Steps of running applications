@@ -1,0 +1,28 @@
+// Formater manuellement le namenode /usr/local/hadoop/hadoop_data/
+
+// Lancer les services
+
+hdfs namenode -format 
+
+start-all.sh
+
+jps 
+
+// Importer les données
+
+hdfs dfs -mkdir -p /usr/local/hadoop/input
+
+cd Desktop
+
+hdfs dfs -copyFromLocal arbres.csv /usr/local/hadoop/input
+
+// Executer le programme
+
+hadoop jar Nom-du-projet.jar /usr/local/hadoop/input/arbres.csv /usr/local/hadoop/output 
+
+// Afficher les résultats
+
+hdfs dfs -cat /usr/local/hadoop/output/part-00000
+
+
+
